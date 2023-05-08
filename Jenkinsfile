@@ -6,7 +6,7 @@
             agent none
             stages{
                 stage('Checkout'){
-                    agent any
+                    agent {label 'slave4'}
                     steps{
                 echo 'cloning...'
                         git 'https://github.com/Okeyna1/DevOpsCodeDemo-1.git'
@@ -20,7 +20,7 @@
                 }
                 }
                 stage('CodeReview'){
-                    agent {label 'slave1'}
+                    agent {label 'slave2'}
                     steps{
                     
                 echo 'codeReview...'
@@ -28,7 +28,7 @@
                     }
                 }
                 stage('UnitTest'){
-                    agent {label 'slave2'}
+                    agent {label 'slave3'}
                     steps{
                     echo 'Testing'
                         sh 'mvn test'
